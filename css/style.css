@@ -1,0 +1,10 @@
+#container {
+  display: flex;
+  font-size: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.inner{
+  width: 300px;
+  height: 150px;
+}
