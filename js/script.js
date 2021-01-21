@@ -84,9 +84,9 @@ const [forAnimals, forVegs, forUsers] = colors;
 addCol(icons);
 
 const appContainer = document.getElementById('container');
-const appSelector = document.getElementsByClassName('icons-colors')[0];
+const appSelector = document.getElementsByClassName('icons')[0];
 
-const selected = $('.icons-colors');
+const selected = $('.icons');
 
 typing.forEach((item) => { // popola il select
   appSelector.innerHTML += `
