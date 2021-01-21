@@ -15,25 +15,29 @@ visualizzare le icone corrispondenti. */
 
 const populate = (arr, app) => { // funzione che popola il container delle icone
   arr.forEach((item) => {
-    const {name, prefix, family, type} = item;
-    let colorIcon;
-    if (type === 'animal') {
-      colorIcon = forAnimals;
-    }
-    if (type === 'vegetable') {
-      colorIcon = forVegs;
-    }
-    if (type === 'user') {
-      colorIcon = forUsers;
-    }
+    const {name, prefix, family, type, color} = item;
     app.innerHTML += `
     <div class="inner">
-      <i class="${family} ${prefix}-${name}" style="color:${colorIcon}"></i>
-      <div>${name}</div>
+      <i class="${family} ${prefix}-${name}" style="color:${color}"></i>
+      <div>${name.toUpperCase()}</div>
     </div>
     `
   });
 };
+
+const addCol = (arr) => { // funzione aggiunta attributo colore
+  arr.forEach((item) => {
+    if (item.type === 'animal') {
+      item.color = forAnimals;
+    }
+    if (item.type === 'vegetable') {
+      item.color = forVegs;
+    }
+    if (item.type === 'user') {
+      item.color = forUsers;
+    }
+  });
+}
 
 const typeFilter = (arr, arr2) => { // funzione per filtrare un solo elemento per tipo, non so se si può fare con .filter()
 arr.forEach((item) => {
@@ -77,6 +81,8 @@ typeFilter(icons, typing);
 const colors = ['yellow', 'red', 'blue']; // array di colori
 const [forAnimals, forVegs, forUsers] = colors;
 
+addCol(icons);
+
 const appContainer = document.getElementById('container');
 const appSelector = document.getElementsByClassName('icons-colors')[0];
 
@@ -84,7 +90,7 @@ const selected = $('.icons-colors');
 
 typing.forEach((item) => { // popola il select
   appSelector.innerHTML += `
-  <option value=${item}>${item}</option>
+  <option value=${item}>${item.toUpperCase()}</option>
   `
 });
 
