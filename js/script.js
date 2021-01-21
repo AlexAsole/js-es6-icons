@@ -8,6 +8,11 @@ le icone con il proprio nome.*/
 - Definire un array di colori e associare ad ogni tipo di icona un colore.
 - Visualizzare le icone di colore diverso in base al tipo. */
 
+/* Milestone 3:
+- Aggiungere una select per filtrare le icone in base al tipo.
+- Popolare le options della select dinamicamente e, ogni volta che cambia il valore selezionato,
+visualizzare le icone corrispondenti. */
+
 const icons = [
   {name:'cat', prefix:'fa', type:'animal', family:'fas'},
   {name:'crow', prefix:'fa', type:'animal', family:'fas'},
@@ -46,7 +51,8 @@ icons.forEach((item) => {
   }
   appContainer.innerHTML += `
   <div class="inner">
-  <i class="${family} ${prefix}-${name}" style="color:${colorIcon}"></i>
+    <i class="${family} ${prefix}-${name}" style="color:${colorIcon}"></i>
+    <div>${name}</div>
   </div>
   `
 });
