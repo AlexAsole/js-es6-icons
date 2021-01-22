@@ -48,9 +48,7 @@ arr.forEach((item) => {
 });
 };
 
-const empty = (app) => { // funzione che svuota il container delle icone
-  app.innerHTML = "";
-}
+
 
 const icons = [ // array di icone
   {name:'cat', prefix:'fa', type:'animal', family:'fas'},
@@ -71,9 +69,6 @@ const icons = [ // array di icone
   {name:'user-secret', prefix:'fa', type:'user', family:'fas'}
 ];
 
-const animals = icons.filter ((element) => element.type === 'animal'); // array di soli animali
-const vegs = icons.filter ((element) =>  element.type === 'vegetable'); // array di soli vegetali
-const users = icons.filter ((element) =>  element.type === 'user'); // array di soli utenti
 
 const typing = [] // array di tipi
 typeFilter(icons, typing);
@@ -98,26 +93,15 @@ populate(icons, appContainer);
 
 selected.change(function() { // funzione per switchare il contenuto
 
+  appContainer.innerHTML = "";
   const value = $(this).val();
 
-  switch (value) {
-
-    case 'animal':
-      empty(appContainer);
-      populate(animals, appContainer);
-      break;
-    case 'vegetable':
-      empty(appContainer);
-      populate(vegs, appContainer);
-      break;
-    case 'user':
-      empty(appContainer);
-      populate(users, appContainer);
-      break;
-    default:
-      empty(appContainer);
-      populate(icons, appContainer);
-      break;
-
+  let filteredArray = icons;
+  if (value !== 'all') {
+    filteredArray = icons.filter((element) => {
+      return element.type === value
+    })
   }
+  populate(filteredArray, appContainer)
+
 });
