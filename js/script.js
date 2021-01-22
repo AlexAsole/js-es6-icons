@@ -14,6 +14,18 @@ le icone con il proprio nome.*/
 visualizzare le icone corrispondenti. */
 
 const populate = (arr, app) => { // funzione che popola il container delle icone
+  // la funzione addCol() funzionerebbe anche qui dentro, ma la preferisco esterna
+  // arr.forEach((item) => {
+  //   if (item.type === 'animal') {
+  //     item.color = forAnimals;
+  //   }
+  //   if (item.type === 'vegetable') {
+  //     item.color = forVegs;
+  //   }
+  //   if (item.type === 'user') {
+  //     item.color = forUsers;
+  //   }
+  // });
   arr.forEach((item) => {
     const {name, prefix, family, type, color} = item;
     app.innerHTML += `
@@ -47,8 +59,6 @@ arr.forEach((item) => {
   }
 });
 };
-
-
 
 const icons = [ // array di icone
   {name:'cat', prefix:'fa', type:'animal', family:'fas'},
@@ -102,6 +112,7 @@ selected.change(function() { // funzione per switchare il contenuto
       return element.type === value
     })
   }
+
   populate(filteredArray, appContainer)
 
 });
