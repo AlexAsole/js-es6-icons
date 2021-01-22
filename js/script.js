@@ -91,8 +91,6 @@ addCol(icons);
 const appContainer = document.getElementById('container');
 const appSelector = document.getElementsByClassName('icons')[0];
 
-const selected = $('.icons');
-
 typing.forEach((item) => { // popola il select
   appSelector.innerHTML += `
   <option value=${item}>${item.toUpperCase()}</option>
@@ -101,10 +99,10 @@ typing.forEach((item) => { // popola il select
 
 populate(icons, appContainer);
 
-selected.change(function() { // funzione per switchare il contenuto
+appSelector.addEventListener('change', (function() { // funzione per switchare il contenuto
 
   appContainer.innerHTML = "";
-  const value = $(this).val();
+  const value = this.value;
 
   let filteredArray = icons;
   if (value !== 'all') {
@@ -115,4 +113,4 @@ selected.change(function() { // funzione per switchare il contenuto
 
   populate(filteredArray, appContainer)
 
-});
+}));
